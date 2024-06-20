@@ -11,11 +11,11 @@ const slice = createSlice({
       reducer(state, action) {
         state.items += action.payload;
       },
-      prepare(value) {
+      prepare(newContact) {
         return {
           payload: {
             id: crypto.randomUUID(),
-            items: [value],
+            ...newContact,
           },
         };
       },
