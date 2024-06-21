@@ -15,8 +15,9 @@ const slice = createSlice({
       state.items.push(payload);
     },
 
-    deleteContact(state, action) {
-      state.value -= action.payload;
+    deleteContact: (state, action) => {
+      const index = state.items.findIndex((item) => item.id === action.payload);
+      state.items.splice(index, 1);
     },
   },
 });
