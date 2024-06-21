@@ -7,8 +7,9 @@ export const ContactList = () => {
   const nameFilter = useSelector((state) => state.filter.name);
 
   const items = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(nameFilter.toLowerCase)
+    contact.name.toLowerCase().includes(nameFilter.toLowerCase())
   );
+
   return (
     <ul className={css.contact_list}>
       {items.map((item) => (
