@@ -5,11 +5,11 @@ const slice = createSlice({
   initialState: { name: "" },
   reducers: {
     changeFilter(state, action) {
-      state.name = action.payload.name;
+      state.name = action.payload;
     },
   },
 });
 
 export const { changeFilter } = slice.actions;
-
+export const selectNameFilter = (state) => state.filter.name;
 export default slice.reducer;

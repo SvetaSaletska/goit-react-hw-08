@@ -11,19 +11,8 @@ const slice = createSlice({
     ],
   },
   reducers: {
-    addContact: {
-      reducer(state, action) {
-        state.items.push(action.payload);
-      },
-      prepare(name, number) {
-        return {
-          payload: {
-            id: crypto.randomUUID(),
-            name,
-            number,
-          },
-        };
-      },
+    addContact(state, { payload }) {
+      state.items.push(payload);
     },
 
     deleteContact(state, action) {
@@ -33,5 +22,5 @@ const slice = createSlice({
 });
 
 export const { addContact, deleteContact } = slice.actions;
-
+export const selectContacts = (state) => state.contacts.items;
 export default slice.reducer;

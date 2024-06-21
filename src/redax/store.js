@@ -22,19 +22,10 @@ const persistedContactReducer = persistReducer(
   contactReducer
 );
 
-const persistedFilterReducer = persistReducer(
-  {
-    key: "selectedName",
-    storage,
-    whitelist: ["name"],
-  },
-  filterReducer
-);
-
 export const store = configureStore({
   reducer: {
     contacts: persistedContactReducer,
-    filter: persistedFilterReducer,
+    filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
