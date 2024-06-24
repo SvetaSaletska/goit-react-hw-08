@@ -75,4 +75,8 @@ export const visibleContacts = createSelector(
 // export const { addContact, deleteContact } = slice.actions;
 export const selectContacts = (state) => state.contacts.items;
 
+export const selectLoading = (state) => state.tasks.loading;
+
+export const selectError = (state) => state.tasks.error;
+
 export const contactReducer = contactsSlice.reducer;

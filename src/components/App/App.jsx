@@ -4,12 +4,15 @@ import { SearchBox } from "../SearchBox/SearchBox";
 import css from "../App/App.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { Loader } from "../Loader/Loader";
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { fetchTasks } from "../../redux/contactsOps";
+import { selectError, selectLoading } from "../../redux/contactsSlice";
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.tasks.loading);
-  const isError = useSelector((state) => state.tasks.error);
+  const isLoading = useSelector(selectLoading);
+  const isError = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchTasks());
@@ -20,7 +23,7 @@ export const App = () => {
       <div>
         <h1 className={css.title}>Phonebook</h1>
         {isLoading && <Loader>Loading message</Loader>}
-        {isError && <Error>Error message</Error>}
+        {isError && <ErrorMessage>Error message</ErrorMessage>}
         <ContactForm />
         <SearchBox />
         <ContactList />

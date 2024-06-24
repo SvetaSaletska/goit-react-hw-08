@@ -6,7 +6,6 @@ import css from "../ContactList/ContactList.module.css";
 
 export const ContactList = () => {
   const tasks = useSelector((state) => state.tasks.items);
-
   const contacts = useSelector(selectContacts);
   const nameFilter = useSelector(selectNameFilter);
   console.log(typeof nameFilter);
