@@ -3,7 +3,7 @@ import { useId } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import css from "../ContactForm/ContactForm.module.css";
-import { addContact } from "../../redax/contactsSlice";
+import { addContact } from "../../redux/filtersSlice";
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -26,8 +26,9 @@ export default function ContactForm() {
       }}
       validationSchema={userSchema}
       onSubmit={(values, actions) => {
+        dispatch(addContact(values));
         actions.resetForm();
-        dispatch(addContact({ id: crypto.randomUUID(), ...values }));
+        // dispatch(addContact({ id: crypto.randomUUID(), ...values }));
       }}
     >
       <Form className={css.form} autoComplete="off">
