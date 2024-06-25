@@ -69,13 +69,4 @@ export const selectVisibleContacts = createSelector(
   }
 );
 
-// export const selectVisibleContacts = (state) => {
-//   const contacts = selectContacts(state);
-//   const nameFilter = selectNameFilter(state);
-
-//   return contacts.filter((contact) =>
-//     contact.name.toLowerCase().includes(nameFilter.toLowerCase())
-//   );
-// };
-
 export const contactReducer = contactsSlice.reducer;

@@ -28,7 +28,6 @@ export default function ContactForm() {
       onSubmit={(values, actions) => {
         dispatch(addContact(values));
         actions.resetForm();
-        // dispatch(addContact({ id: crypto.randomUUID(), ...values }));
       }}
     >
       <Form className={css.form} autoComplete="off">
