@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Loader } from "../Loader/Loader";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
-import { fetchTasks } from "../../redux/contactsOps";
+import { fetchContacts } from "../../redux/contactsOps";
 import { selectError, selectLoading } from "../../redux/contactsSlice";
 
 export const App = () => {
@@ -15,7 +15,7 @@ export const App = () => {
   const isError = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchTasks());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
