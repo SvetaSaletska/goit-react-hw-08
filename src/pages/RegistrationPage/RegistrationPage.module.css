@@ -1,9 +1,9 @@
+.form {
+  width: 320px;
+}
 
-export default function RegisterPage() {
-  return (
-    <div>
-      <PageTitle>Register your account</PageTitle>
-      <RegistrationForm />
-    </div>
-  );
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 }

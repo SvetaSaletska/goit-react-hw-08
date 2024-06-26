@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PageTitle from "../../components/PageTitle/PageTitle";
-import TaskList from "../../components/TaskList/TaskList";
-import TaskEditor from "../../components/TaskEditor/TaskEditor";
-import { fetchTasks } from "../../redux/tasks/operations";
+import { ContactList } from "../../components/ContactList/ContactList";
+import { SearchBox } from "../../components/SearchBox/SearchBox";
+import { fetchTasks } from "../../redux/contacts/contactsOps";
 import { selectLoading } from "../../redux/tasks/selectors";
 
-export default function TasksPage() {
+export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
 
@@ -17,9 +17,9 @@ export default function TasksPage() {
   return (
     <>
       <PageTitle>Your contacts</PageTitle>
-      <TaskEditor />
+      <SearchBox />
       <div>{isLoading && "Request in progress..."}</div>
-      <TaskList />
+      <ContactList />
     </>
   );
 }

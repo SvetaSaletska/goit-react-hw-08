@@ -11,37 +11,51 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
+// sveta@gmail.com
 export const register = createAsyncThunk(
   "auth/register",
-  async (newUser, thunkApi) => {
+  async (newUser, thunkAPI) => {
     try {
       const res = await axios.post("/users/signup", newUser);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+// export const register = createAsyncThunk(
+//   "auth/register",
+//   async (newUser, thunkApi) => {
+//     try {
+//       const res = await axios.post("/users/signup", newUser);
+//       setAuthHeader(res.data.token);
+//       return res.data;
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const logIn = createAsyncThunk(
   "auth/login",
-  async (userData, thunkApi) => {
+  async (userInfo, thunkAPI) => {
     try {
-      const res = await axios.post("/users/login", userData);
+      const res = await axios.post("/users/login", userInfo);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logOut = createAsyncThunk(async (_, thunkApi) => {
+export const logOut = createAsyncThunk(async (_, thunkAPI) => {
   try {
     await axios.post("/users/logout");
     clearAuthHeader();
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
