@@ -25,8 +25,9 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refreshUser);
+    dispatch(refreshUser());
   }, [dispatch]);
+
   const isLoading = useSelector(selectLoading);
   const isRefreshing = useSelector(selectIsRefreshing);
 
