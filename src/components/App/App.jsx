@@ -6,10 +6,12 @@ import { Route, Routes } from "react-router-dom";
 // import css from "../App/App.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Loader } from "../Loader/Loader";
-// import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
+import RestrictedRoute from "../RestrictedRoute.jsx";
+import PrivateRoute from "../../components/PrivateRoute.jsx";
 import { selectLoading } from "../../redux/contacts/selectors.js";
 import Layaut from "../Layout/Layout";
 import { refreshUser } from "../../redux/auth/operations.js";
+import { selectIsRefreshing } from "../../redux/auth/selectors.js";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage.jsx"));
 const NotFoundPage = lazy(() =>
@@ -30,17 +32,36 @@ export const App = () => {
     dispatch(refreshUser);
   }, [dispatch]);
   const isLoading = useSelector(selectLoading);
-  // const isError = useSelector(selectError);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  return (
+  return isRefreshing ? (
+    <div>Refreshing User!</div>
+  ) : (
     <Layaut>
       {isLoading && <Loader>Loading message</Loader>}
       <Suspense>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute component={<RegisterPage redirectTo="/" />} />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                component={<LoginPage redirectTo="/components" />}
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute component={<ContactsPage redirectTo="/login" />} />
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
