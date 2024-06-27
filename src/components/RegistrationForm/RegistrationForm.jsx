@@ -8,10 +8,6 @@ export default function RegistrationForm() {
 
   const handleSubmit = (values, actions) => {
     dispatch(register(values));
-    //   .unwrap()
-    //   .then((data) => console.log(data))
-    //   .catch((err) => console.log(err));
-
     actions.resetForm();
   };
 
@@ -37,7 +33,9 @@ export default function RegistrationForm() {
           Password
           <Field type="password" name="password" />
         </label>
-        <button type="submit">Register</button>
+        <button className={css.button} type="submit">
+          Register
+        </button>
       </Form>
     </Formik>
   );

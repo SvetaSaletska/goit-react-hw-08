@@ -8,10 +8,6 @@ export default function LoginForm() {
 
   const handleSubmit = (values, actions) => {
     dispatch(logIn(values));
-    // .unwrap()
-    // .then(data => console.log(data))
-    // .catch(err => console.log(err));
-
     actions.resetForm();
   };
 
@@ -32,7 +28,9 @@ export default function LoginForm() {
           Password
           <Field type="password" name="password" />
         </label>
-        <button type="submit">Log In</button>
+        <button className={css.button} type="submit">
+          Log In
+        </button>
       </Form>
     </Formik>
   );

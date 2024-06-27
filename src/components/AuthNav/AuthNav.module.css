@@ -6,6 +6,7 @@
   color: #2a363b;
 }
 
-.link.active {
-  color: #e84a5f;
+.active {
+  color: orangered;
+  text-decoration: underline;
 }

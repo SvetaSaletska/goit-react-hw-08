@@ -1,9 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-// import { ContactList } from "../ContactList/ContactList";
-// import ContactForm from "../ContactForm/ContactForm";
-// import { SearchBox } from "../SearchBox/SearchBox";
-// import css from "../App/App.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Loader } from "../Loader/Loader";
 import RestrictedRoute from "../RestrictedRoute.jsx";
@@ -52,7 +48,7 @@ export const App = () => {
             path="/login"
             element={
               <RestrictedRoute
-                component={<LoginPage redirectTo="/components" />}
+                component={<LoginPage redirectTo="/contacts" />}
               />
             }
           />
@@ -68,11 +64,3 @@ export const App = () => {
     </Layaut>
   );
 };
-
-//  <div>
-//    <h1 className={css.title}>Phonebook</h1>
-//    {isError && <ErrorMessage>Error message</ErrorMessage>}
-//    <ContactForm />
-//    <SearchBox />
-//    <ContactList />
-//  </div>;

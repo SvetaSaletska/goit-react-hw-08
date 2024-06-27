@@ -22,10 +22,10 @@
   text-align: center;
   margin-right: auto;
   margin-left: auto;
-  border: 1px solid gray;
   padding: 4px;
   margin-top: 10px;
   margin-bottom: auto;
+  border: 1px solid gray;
 }
 
 .error {

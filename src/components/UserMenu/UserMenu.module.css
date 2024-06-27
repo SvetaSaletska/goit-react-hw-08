@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  background-color: #ff4500;
+  color: #fff;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  margin-top: 10px;
+  padding: 0;
+}
