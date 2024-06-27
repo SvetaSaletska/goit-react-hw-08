@@ -4,12 +4,12 @@ import { Route, Routes } from "react-router-dom";
 // import ContactForm from "../ContactForm/ContactForm";
 // import { SearchBox } from "../SearchBox/SearchBox";
 // import css from "../App/App.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Loader } from "../Loader/Loader";
 // import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
-import { fetchContacts } from "../../redux/contacts/contactsOps.js";
-import { selectLoading } from "../../redux/contacts/contactsSlice.js";
+import { selectLoading } from "../../redux/contacts/selectors.js";
 import Layaut from "../Layout/Layout";
+import { refreshUser } from "../../redux/auth/operations.js";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage.jsx"));
 const NotFoundPage = lazy(() =>
@@ -21,18 +21,16 @@ const ContactsPage = lazy(() =>
 const RegisterPage = lazy(() =>
   import("../../pages/RegistrationPage/RegistrationPage.jsx")
 );
-const LoginPage = lazy(() =>
-  import("../../pages/RegistrationPage/RegistrationPage.jsx")
-);
+const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage.jsx"));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectLoading);
-  // const isError = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser);
   }, [dispatch]);
+  const isLoading = useSelector(selectLoading);
+  // const isError = useSelector(selectError);
 
   return (
     <Layaut>
