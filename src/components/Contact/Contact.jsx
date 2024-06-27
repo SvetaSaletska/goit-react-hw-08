@@ -4,17 +4,9 @@ import css from "../Contact/Contact.module.css";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contacts/contactsOps.js";
 import { fetchContacts } from "../../redux/contacts/contactsOps.js";
-import toast from "react-hot-toast/headless";
 
 export const Contact = ({ items: { name, number, id } }) => {
-  const dispatch = useDispatch()
-    .unwrap()
-    .then(() => {
-      toast.success("Contact successfully added");
-    })
-    .catch(() => {
-      toast("An error occurred, please try again");
-    });
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());

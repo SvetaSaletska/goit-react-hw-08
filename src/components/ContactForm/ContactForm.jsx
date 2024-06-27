@@ -3,7 +3,7 @@ import { useId } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import css from "../ContactForm/ContactForm.module.css";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/contactsOps";
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -13,7 +13,7 @@ const userSchema = Yup.object().shape({
   number: Yup.number().required("Required"),
 });
 
-export default function ContactForm() {
+export const ContactForm = () => {
   const dispatch = useDispatch();
   const nameFieldId = useId();
   const numberFieldId = useId();
@@ -47,4 +47,4 @@ export default function ContactForm() {
       </Form>
     </Formik>
   );
-}
+};
